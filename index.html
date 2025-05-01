@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Project 2 Report</title>
+    <style>
+      :root {
+        --color-neutral-95: hsl(220 10% 95%);
+        --color-neutral-90: hsl(220 10% 90%);
+        --color-neutral-80: hsl(220 10% 80%);
+        --color-neutral-70: hsl(220 10% 70%);
+        --color-neutral-60: hsl(220 10% 60%);
+        --color-neutral-50: hsl(220 10% 50%);
+        --color-neutral-40: hsl(220 10% 40%);
+        --color-neutral-30: hsl(220 10% 30%);
+        --color-neutral-20: hsl(220 10% 20%);
+        --color-neutral-10: hsl(220 10% 10%);
+      }
+
+      html {
+        font: 100%/1.5 system-ui;
+        counter-reset: figure;
+        background: var(--color-neutral-95);
+        max-width: min(75vw, 80em);
+        margin: 0 auto;
+      }
+
+      /* Headings */
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        line-height: 1.1;
+        font-weight: 600;
+        text-wrap: balance;
+      }
+
+      h1,
+      h2 {
+        border-bottom: 1px solid var(--color-neutral-80);
+        padding-bottom: 0.2em;
+      }
+
+      h1 {
+        margin-block: 1em 0.5rem;
+        font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
+        font-weight: 800;
+
+        small {
+          display: block;
+          width: fit-content;
+          padding: 0.2em 0.5em;
+          margin-inline: auto;
+          color: white;
+          background: var(--color-neutral-40);
+          font-size: 40%;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+      }
+
+      h2 {
+        font-size: 180%;
+        color: var(--color-neutral-30);
+      }
+
+      h3 {
+        font-size: 130%;
+      }
+
+      /* Lists */
+
+      ul,
+      ol {
+        padding-inline-start: 2em;
+      }
+
+      li {
+        &::marker {
+          color: var(--color-neutral-40);
+        }
+
+        + li {
+          margin-top: 0.2em;
+        }
+      }
+
+      #for {
+        color: green;
+      }
+
+      #opp {
+        color: red;
+      }
+
+      /* Sectioning elements */
+
+      header {
+        padding-block: 1em;
+        text-align: center;
+      }
+
+      main {
+        background: white;
+        color: var(--color-neutral-20);
+        border-radius: 1rem;
+        padding: 0.1rem 2rem;
+      }
+
+      /* Figures */
+
+      figure {
+        margin: 1em 0;
+        padding: 0.5rem;
+        margin-inline: -0.5em;
+        border: 1px solid var(--color-neutral-80);
+        box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
+        text-align: center;
+        background: white;
+
+        > figcaption {
+          font: 500 75% var(--font-sans);
+          background: var(--color-neutral-95);
+          padding: 0.5rem;
+          margin: -0.5rem;
+          margin-top: 0.5rem;
+          counter-increment: figure;
+          text-align: left;
+
+          &::before {
+            content: 'Figure ' counter(figure) ': ';
+            font-weight: bold;
+            color: var(--color-neutral-40);
+          }
+
+          a:not(:hover, :focus, :active) {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-color: color-mix(
+              in lab,
+              currentColor,
+              transparent 70%
+            );
+          }
+        }
+      }
+      /* img {
+        margin: auto
+      } */
+      
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <small>Project 2</small>
+        Persuasive or Deceptive Visualization?
+      </h1>
+
+      <p><strong>Alexander Kuo</strong> — <em>a3kuo@ucsd.edu</em></p>
+    </header>
+
+    <main>
+      <h2>Proposition: Regular Police Officers are the Worst At Their Job</h2>
+
+      <section>
+        <h3><strong id="for">FOR</strong> the Proposition</h3>
+
+        <figure>
+          <img src="prop_for.png" alt="" />
+          <figcaption>Regular police officers have the highest percentage of total complaints out of all ranks.</figcaption>
+        </figure>
+
+        <p>Design Decisions and Rationale:</p>
+
+        <ul>
+          <li>Displayed informaiton in a pie chart (1)<br>A pie chart clearly demonstrated differences between groups, especially larger ones. I considered a bar graph, but a pie chart allowed for better perception.</li>
+          <li>Exploded the largest portion of the pie chart (1)<br>Having a slice pop out provides further emphasis on the highest percentage of regular police officers. Bolding the percentage number could've worked as well, but exploding the chart makes it stand out more.</li>
+          <li>Grouped by general ranks (-1)<br>Many ranks of same superiority combined allowed for regular police officers to have highest % of complaints since they have the most officers. Having less slices resulted in better visibility and less distractions than more slices.</li>
+          <li>Used colorblind-friendly color scheme (2)<br>Tableau colorblind theme worked well to distinguish between each section as well acknowledge the colorblind.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3><strong id="opp">AGAINST</strong> the Proposition</h3>
+
+        <figure>
+          <img src="prop_opp.png" alt="" />
+          <figcaption>On the other hand, they have the lowest complaints per officer out of all ranks.</figcaption>
+        </figure>
+
+        <p>Design Decisions and Rationale:</p>
+
+        <ul>
+          <li>Displayed information in a bar graph (1)<br>The graph easily shows the large difference in bar lengths better than other plot types. Same scale length uses perceptual work rather than cognitive work for the reader, making it easier to understand.</li>
+          <li>Used complaints per officer (-2)<br>Using per officer rates along with general groups created disparity with the large group of normal police officers. Different groupings did not show the same effect as complaint per officer.</li>
+          <li>Grouped by general ranks (-1)<br>Bigger groups resulted in less complaints per officer for the regular officer. Using less bars reduces congestion and simplifies the graph while enhancing the differences. Grouping by more specific ranks create more noise and does not show that normal police officers have the lowest complaint rate.</li>
+          <li>Coloring the regular police officer rank differently (1)<br>This provides emphasis and brings attention to the smallest bar for easier comparison. An annotation would crowd the visualization, so a contrasting color would be simpler and more effective. The orange color also comes from the Tableau colorblind theme to acknowledge the colorblind.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Final Reflection</h2>
+
+        <p>
+          Making both visualizations required using several methods, both earnest and deceptive, to support or oppose the proposition.
+          Using different plot types allowed for more versatility to emphasis different portions of each plot, allowing the graph to showcase exactly what I wanted.
+          Finding ways to group the plots was challenging as I needed specific groupings to have opposing ideas clash against each other.
+          At first I used specific abbreviated officer ranks to group, but there were too many groups.
+          However, I noticed the non-abbreviated rank columns had general groupings, so those were better to use since there was no need to explain each abbreviation.
+          <br>
+          Using the total number of complaints and calculating percentages was a simplistic way to create deceptiveness because most police officers are of the lowest rank.
+          Even if they had lower complaint rate as shown in the visualization against the proposition, the raw numbers would still show more total complaints.
+          After I noticed this, I decided to plot the complaint per officer to show a large deviation from the other groups.
+          This made the smaller groups have higher per officer ratings while the lowest ranking officers had a large enough group to lower the rate.
+          It worked surprisingly well as normal officers had a much lower complaint rate compared to the rest, making it easy to show differences.
+          A bar graph was more effective to show the smallest group while a pie chart was more effective to show the largest group.
+          <br>
+          These techinques created polarizing views, yet still have an ethical aspect to both visualizations.
+          I believe this analysis is still ethical as no data was purposefully omitted, but rather specific groupings were made to show different ideas.
+          Some may say these groupings are considered misleading because of the way the data was grouped, but all data is still present, and there were no violations of normal conventions.
+          As long as there was no deliberate filtering of important data, these choices are considered persuasive.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
